@@ -3,22 +3,9 @@
         <title>Microfrontends!</title>
     </head>
     <body>
-        <async-component url="header"></async-component>
-        <async-component url="content"></async-component>
-        <async-component url="footer"></async-component>
-        <script>
-         function loadPage (element) {
-             var xmlHttp = new XMLHttpRequest();
-
-             xmlHttp.onreadystatechange = function () {
-                 if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-                     element.innerHTML = xmlHttp.responseText;
-             };
-
-             xmlHttp.open("GET", element.attributes.url.value, true);
-             xmlHttp.send(null);
-         }
-         document.querySelectorAll('async-component').forEach(loadPage);
-        </script>
+        <script src="header.js"></script>
+        <!-- async does not work this way  -->
+        <script async src="content.js"></script>
+        <script src="footer.js"></script>
     </body>
 </html>
